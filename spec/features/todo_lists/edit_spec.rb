@@ -52,6 +52,4 @@ describe "Editing todo lists" do
 		expect(page).to have_content("error")
 	end
 
-
-
 end

@@ -6,6 +6,7 @@
 			<td><%= item.content %></td>
 			<td><%= link_to "Edit", edit_todo_list_todo_item_path(item) %></td>
 			<td><%= link_to "Delete", todo_list_todo_item_path(item), method: :delete, data: {confirm: "Are you sure?"} %></td>
+			<td><%= link_to "Mark Complete", complete_todo_list_todo_item_path(item), method: :patch %></td>
 		</tr>
 	<% end %>
 </table>

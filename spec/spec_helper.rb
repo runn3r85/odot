@@ -16,6 +16,10 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
   config.include TodoListHelpers, type: :feature
   config.include RailsDomIdHelper, type: :feature
+  config.include FactoryGirl::Syntax::Methods
+  config.include AuthenticationHelpers::Controller, type: :controller
+    config.include AuthenticationHelpers::Feature, type: :feature
+
   # config.include FeatureHelpers, type: :feature
   # ## Mock Framework
   #

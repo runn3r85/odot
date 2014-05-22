@@ -1,22 +1,17 @@
 class TodoItemsController < ApplicationController
-  
-	before_action :find_todo_list
 
-
+  before_action :require_user
+  before_action :find_todo_list
 
   def index
-  	
   end
 
-
   def new
-  	
-  	@todo_item = @todo_list.todo_items.new
+    @todo_item = @todo_list.todo_items.new
   end
 
 
   def create
-  	
   	@todo_item = @todo_list.todo_items.new(todo_item_params)
   	if @todo_item.save
   		flash[:success] = "Added todo list item."

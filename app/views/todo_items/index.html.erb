@@ -1,6 +1,14 @@
 <h1 class="title"><%= @todo_list.title %></h1>
 
 <table class="todo_items">
+  <thead>
+    <tr>
+      <th width="25%">Completed?</th>
+      <th width="65%">Content</th>
+      <th width="10%">Functions</th>
+    </tr>
+  </thead>
+  <tbody>
 	<% @todo_list.todo_items.each do |item| %>
 		<tr id="<%= dom_id(item) %>">
 			<td>
@@ -15,6 +23,7 @@
 			<td><%= link_to "Delete", todo_list_todo_item_path(item), method: :delete, data: {confirm: "Are you sure?"} %></td>
 		</tr>
 	<% end %>
+  </tbody>
 </table>
 
 <p><%= link_to "New Todo Item", new_todo_list_todo_item_path %></p>

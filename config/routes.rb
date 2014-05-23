@@ -4,7 +4,8 @@ Odot::Application.routes.draw do
   delete "/logout", to: "user_sessions#destroy", as: :logout
 
   resources :users
-  resources :user_sessions, only: [:new, :create]
+  resources :user_sessions, only: [:create]
+  resources :password_resets, only: [:new, :create, :edit]
 
   resources :todo_lists do
   	resources :todo_items do

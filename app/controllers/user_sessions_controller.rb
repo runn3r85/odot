@@ -20,6 +20,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    cookies.delete(:remember_me_token)
     reset_session
     flash[:notice] = "You have been successfully logged out."
     redirect_to root_url

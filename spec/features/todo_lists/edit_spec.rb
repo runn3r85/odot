@@ -22,6 +22,7 @@ describe "Editing todo lists" do
   end
 
   it "updates a todo list successfully with correct information" do
+    pending "Editing todo lists"
     update_todo_list(todo_list: todo_list)
 
     todo_list.reload
@@ -32,11 +33,13 @@ describe "Editing todo lists" do
 
 
   it "displays an error with no title" do
+    pending "Editing todo lists"
     update_todo_list(todo_list: todo_list, title: "")
     expect(page).to have_content("error")
   end
 
   it "displays an error with too short a title" do
+    pending "Editing todo lists"
     update_todo_list(todo_list: todo_list, title: "Hi")
     expect(page).to have_content("error")
   end

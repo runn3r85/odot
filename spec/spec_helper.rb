@@ -19,7 +19,7 @@ RSpec.configure do |config|
   config.include RailsDomIdHelper, type: :feature
   config.include FactoryGirl::Syntax::Methods
   config.include AuthenticationHelpers::Controller, type: :controller
-    config.include AuthenticationHelpers::Feature, type: :feature
+  config.include AuthenticationHelpers::Feature, type: :feature
 
   # config.include FeatureHelpers, type: :feature
   # ## Mock Framework

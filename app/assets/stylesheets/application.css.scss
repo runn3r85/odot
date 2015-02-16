@@ -16,13 +16,16 @@
 
  /* Modules */
  @import 'modules/variables';
+ @import 'modules/mixins';
  @import 'modules/helpers';
 
 
  /* Partials */
+ @import 'partials/icons';
  @import 'partials/header';
  @import 'partials/todo_lists';
  @import 'partials/todo_items';
+ 
 
 
 

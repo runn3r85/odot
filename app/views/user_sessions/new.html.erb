@@ -1,17 +1,23 @@
-<h1>Log In</h1>
+<%= title "Log In" %>
+
 <%= form_tag user_sessions_path do %>
-  <%= label_tag :email, "Email Address" %>
-  <%= text_field_tag :email, params[:email] %>
-  <br/>
+  <div class="row">
+    <div class="small-12 columns">
+    <%= label_tag :email, "Email Address" %>
+    <%= text_field_tag :email, params[:email] %>
 
+    <%= label_tag :password, "Password" %>
+    <%= password_field_tag :password %>
 
-  <%= label_tag :password, "Password" %>
-  <%= password_field_tag :password %>
-  <br/>
-  <%= label_tag :remember_me, "Remember Me?" %>
-  <%= check_box_tag :remember_me %>
-  <br/>
+    <%= label_tag :remember_me, "Remember Me?" %>
+    <%= check_box_tag :remember_me %>
+    </div>
+  </div>
 
-  <%= submit_tag "Sign In" %>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= submit_tag "Sign In", class: "button radius expand" %>
+    </div>
+  </div>
   <%= link_to "Forgot Password?", new_password_reset_path %>
 <% end %>

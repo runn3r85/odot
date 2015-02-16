@@ -19,12 +19,31 @@
 
   <header class="row global-header">
     <div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
-    <%= link_to "Todo Lists", todo_lists_path %>
+    
     <% if logged_in? %>
-      <%= link_to "Log Out", logout_path, method: :delete %>
+      <div class="small-4 columns header-icon">
+        <%= link_to "Sign Out", logout_path, method: :delete, class: "icon-signout hide-text" %>
+      </div>
+      <div class="small-4 columns">
+        <h1 class="logo">
+          <%= link_to "Odot", todo_lists_path, class: "hide-text" %>
+        </h1>
+      </div>
+      <div class="small-4 columns header-icon">
+        <%= link_to "Add Item", "#", class: "icon-new right hide-text" %>
+      </div>
     <% else %>
-      <%= link_to "Log In", login_path %>
-      <%= link_to "Sign Up", new_user_path %>
+      <div class="small-4 columns header-icon">
+        <%= link_to "Sign In", login_path %>
+        <%= link_to "Sign Up", new_user_path %>
+      </div>
+      <div class="small-4 columns ">
+        <h1 class="logo">
+          <%= link_to "Odot", root_path, class: "hide-text" %>
+        </h1>
+      </div>
+      <div class="small-4 columns header-icon">
+      </div>
     <% end %>
     </div>
   </header>

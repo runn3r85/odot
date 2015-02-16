@@ -21,6 +21,11 @@ RSpec.configure do |config|
   config.include AuthenticationHelpers::Controller, type: :controller
   config.include AuthenticationHelpers::Feature, type: :feature
 
+  #Rspec 3
+  config.expose_current_running_example_as :example
+  config.infer_spec_type_from_file_location!
+
+
   # config.include FeatureHelpers, type: :feature
   # ## Mock Framework
   #

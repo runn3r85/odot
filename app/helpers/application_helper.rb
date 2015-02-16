@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def title(title)
+    content_for(:title){ "#{title} | " }
+  end
+
   def new_item_link
     if @todo_list && !@todo_list.new_record?
       text = "Todo Item"
@@ -10,4 +14,5 @@ module ApplicationHelper
     end
     link_to "Add #{text}", path, class: "icon-new right hide-text"
   end
+
 end

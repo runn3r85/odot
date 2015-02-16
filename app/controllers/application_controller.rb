@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveSupport::MessageVerifier::InvalidSignature, with: :render_error
 
   private
+
+  def go_back_link(path)
+    @go_back ||= path
+    @go_back
+  end
+
   def render_error
     render file: 'public/500.html', status: :internal_server_error, layout: false
   end

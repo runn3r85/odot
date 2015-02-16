@@ -1,35 +1,9 @@
 <%= title("Change Your Password") %>
 
-<%= form_for @user, url: password_reset_path(@user.password_reset_token), html: {method: :patch} do |f| %>
+<%= form_for @user, builder: FoundationFormBuilder, url: password_reset_path(@user.password_reset_token), html: {method: :patch} do |f| %>
  
-  <div class="row">
-    <div class="small-12 columns">
-      <%= f.label :password %>
-    </div>
-  </div>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit "Change Password" %>
 
-
-  <div class="row">
-    <div class="small-12 columns">
-      <%= f.label :password %>
-    </div>
-  </div>
-    
-  <div class="row">
-    <div class="small-12 columns">
-      <%= f.label :password_confirmation, "Password (again)" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="small-12 columns">
-      <%= f.password_field :password_confirmation %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="small-12 columns">
-      <%= f.submit "Change Password", class: "button radius expand" %>
-    </div>
-  </div>
 <% end %>

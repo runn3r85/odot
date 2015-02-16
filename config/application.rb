@@ -12,6 +12,9 @@ module Odot
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    #add lib directory to autoload path
+    config.autoload_paths += %W( #{config.root}/lib )
+
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
@@ -22,5 +25,6 @@ module Odot
     I18n.enforce_available_locales = false
     config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/mailer_previews"
     config.assets.precompile += %w( vendor/modernizr.js )
+    config.action_view.field_error_proc = Proc.new {|html,instance| html}
   end
 end

@@ -10,8 +10,20 @@
     </div>
 <% end %>
 
+  <div class="row">
+    <div class="small-12 columns">
+      <%= form.label :content %>
+    </div>
+  </div>
 
-<%= form.label :content %>
-<%= form.text_field :content %>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= form.text_field :content %>
+    </div>
+  </div>
 
-<%= form.submit "Save" %>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= form.submit "Save", class: "button radius expand" %>
+    </div>
+  </div>

@@ -25,7 +25,7 @@ describe "Editing todo items" do
     fill_in "Content", with: ""
     click_button "Save"
     expect(page).to_not have_content("Saved todo list item.")
-    expect(page).to have_content("Content can't be blank")
+    expect(page).to have_content(/can't be blank/i)
     todo_item.reload
     expect(todo_item.content).to eq(todo_item.content)
   end
@@ -38,7 +38,7 @@ describe "Editing todo items" do
     fill_in "Content", with: "1"
     click_button "Save"
     expect(page).to_not have_content("Saved todo list item.")
-    expect(page).to have_content("Content is too short")
+    expect(page).to have_content(/is too short/i)
     todo_item.reload
     expect(todo_item.content).to eq(todo_item.content)
   end

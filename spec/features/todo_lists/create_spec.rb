@@ -30,7 +30,7 @@ describe "Creating todo lists" do
     create_todo_list(title: "" )
 
     expect(TodoList.count).to eq(0)
-    expect(page).to have_content("error")
+    expect(page).to have_content(/can't be blank/i)
 
     visit "/todo_lists"
     expect(page).to_not have_content("This is what I'm doing today")
@@ -43,7 +43,7 @@ describe "Creating todo lists" do
     create_todo_list(title: "Hi")
 
     expect(TodoList.count).to eq(0)
-    expect(page).to have_content("error")
+    expect(page).to have_content(/too short/i)
 
     visit "/todo_lists"
     expect(page).to_not have_content("This is what I'm doing today")

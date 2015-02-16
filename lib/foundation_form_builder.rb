@@ -9,8 +9,8 @@ class FoundationFormBuilder < ActionView::Helpers::FormBuilder
     define_method(form_method) do |*args|
       attribute = args[0]
       options = args[1] || {}
-      options[:label] ||= attribute
-      label_text ||= options.delete(:label).to_s.titleize
+      options[:label] ||= attribute.to_s.titleize
+      label_text ||= options.delete(:label)
       label_options ||= {}
       wrapper_options ||= {}
       if errors_on?(attribute)

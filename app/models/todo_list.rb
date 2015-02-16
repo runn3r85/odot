@@ -3,7 +3,7 @@ class TodoList < ActiveRecord::Base
 	has_many :todo_items
   belongs_to :user
 
-	validates :title, length: {minimum: 3}
+	validates :title, length: {minimum: 3}, presence: true
 
 
 	def has_completed_items?

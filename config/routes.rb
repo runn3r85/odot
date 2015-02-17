@@ -16,5 +16,5 @@ Odot::Application.routes.draw do
   	end
   end
 
-  root 'todo_lists#index'
+  root 'pages#home'
 end

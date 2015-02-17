@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield :title %>Odot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%= render partial: "layouts/flash" %>
+  <header>
+    <p><%= link_to "Sign In", login_path %></p>
+    <p><%= link_to "Sign Up", new_user_path %></p>
+  </header>
+  <%= yield %>
+   
+  </footer>
+
+</body>
+</html>

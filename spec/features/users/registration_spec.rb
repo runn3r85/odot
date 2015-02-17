@@ -6,7 +6,7 @@ describe "Signing Up" do
     expect(User.count).to eq(0)
     visit "/"
     expect(page).to have_content("Sign Up")
-    within("header") { click_link "Sign Up" }
+    within(".hero-inner") { click_link "Sign Up" }
 
     fill_in "First Name", with: "Brandon"
     fill_in "Last Name", with: "Barrette"
@@ -20,7 +20,7 @@ describe "Signing Up" do
 
   it "displays a tutorial when the user signs up" do
     visit "/"
-    within("header") { click_link "Sign Up" }
+    within(".hero-inner") { click_link "Sign Up" }
 
     fill_in "First Name", with: "Brandon"
     fill_in "Last Name", with: "Barrette"

@@ -19,7 +19,6 @@ describe TodoList do
   		todo_list.todo_items.create(content: "Eggs")
   		expect(todo_list.has_completed_items?).to be_false
   	end
-
   end
 
 

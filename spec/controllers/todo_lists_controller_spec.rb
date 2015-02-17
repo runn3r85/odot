@@ -87,7 +87,7 @@ context "logged in" do
 
       it "redirects to the created todo_list" do
         post :create, {:todo_list => valid_attributes}, valid_session
-        response.should redirect_to(TodoList.last)
+        response.should redirect_to(todo_list_todo_items_path(TodoList.last))
       end
 
       it "creates a todo list for the current user" do

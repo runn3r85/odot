@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
     @go_back
   end
 
+  # def set_a_flash_message
+  #   flash.now[:success] = "This is a great success!"
+  #   flash.now[:notice] = "This is a notice"
+  #   flash.now[:error] = "This is an error"
+  # end
+
   def render_error
     render file: 'public/500.html', status: :internal_server_error, layout: false
   end

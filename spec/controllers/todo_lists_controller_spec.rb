@@ -39,21 +39,6 @@ context "logged in" do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested todo_list as @todo_list for the logged in user" do
-      todo_list = user.todo_lists.create! valid_attributes
-      get :show, {:id => todo_list.to_param}, valid_session
-      assigns(:todo_list).should eq(todo_list)
-      expect(assigns(:todo_list).user).to eq(user)
-    end
-
-    # it "response with 404 if todo_list does not belong to current user" do
-    #   other_todo_list = TodoList.create!(valid_attributes.merge(user_id: create(:user).id))
-    #   get :show, {:id => other_todo_list.to_param}, valid_session
-    #   response.response_code.should == 404
-    # end
-  end
-
   describe "GET new" do
     it "assigns a new todo_list as @todo_list" do
       get :new, {}, valid_session
@@ -144,7 +129,7 @@ context "logged in" do
         it "redirects to the todo_list" do
           todo_list = user.todo_lists.create! valid_attributes
           put :update, {:id => todo_list.to_param, :todo_list => valid_attributes}, valid_session
-          response.should redirect_to(todo_list)
+          response.should redirect_to(todo_list_todo_items_path(todo_list))
         end
       end
 

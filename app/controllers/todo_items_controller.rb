@@ -12,7 +12,6 @@ class TodoItemsController < ApplicationController
     @todo_item = @todo_list.todo_items.new
   end
 
-
   def create
   	@todo_item = @todo_list.todo_items.new(todo_item_params)
   	if @todo_item.save
@@ -25,7 +24,7 @@ class TodoItemsController < ApplicationController
   end
 
   def edit
-  	  	@todo_item = @todo_list.todo_items.find(params[:id])
+    @todo_item = @todo_list.todo_items.find(params[:id])
   end
 
 

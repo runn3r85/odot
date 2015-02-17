@@ -1,17 +1,12 @@
 class TodoListsController < ApplicationController
   before_action :require_user
-  before_action :set_todo_list, only: [:show, :edit, :update, :destroy, :email]
+  before_action :set_todo_list, only: [:edit, :update, :destroy, :email]
   before_action :set_back_link, except: [:index]
 
   # GET /todo_lists
   # GET /todo_lists.json
   def index
     @todo_lists = current_user.todo_lists
-  end
-
-  # GET /todo_lists/1
-  # GET /todo_lists/1.json
-  def show
   end
 
   def email
@@ -54,7 +49,7 @@ class TodoListsController < ApplicationController
   def update
     respond_to do |format|
       if @todo_list.update(todo_list_params)
-        format.html { redirect_to @todo_list, notice: 'Todo list was successfully updated.' }
+        format.html { redirect_to todo_list_todo_items_path(@todo_list), notice: 'Todo list was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

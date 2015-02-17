@@ -29,22 +29,31 @@
   </div>
 </div>
 
-<ul class="list todo-items no-bullet">
-  <% @todo_list.todo_items.each do |item| %>
-    <li class="todo-item row" id="<%= dom_id(item) %>">
-      <div class="small-2 medium-1 columns checkmark">
-        <% if item.completed? %>
-          <%= link_to "Mark Incomplete", complete_todo_list_todo_item_path(@todo_list, item), method: :patch, class: "icon-check checked hide-text" %>
-        <% else %>
-          <%= link_to "Mark Complete", complete_todo_list_todo_item_path(@todo_list, item), method: :patch, class: "icon-check unchecked hide-text" %>
-        <% end %>
-      </div>
-      <div class="small-10 medium-11 columns truncate todo-content" title="<%= item.content %>">
-        <%= link_to item.content, edit_todo_list_todo_item_path(@todo_list, item) %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<% if @todo_list.todo_items.size > 0 %>
+  <ul class="list todo-items no-bullet">
+    <% @todo_list.todo_items.each do |item| %>
+      <li class="todo-item row" id="<%= dom_id(item) %>">
+        <div class="small-2 medium-1 columns checkmark">
+          <% if item.completed? %>
+            <%= link_to "Mark Incomplete", complete_todo_list_todo_item_path(@todo_list, item), method: :patch, class: "icon-check checked hide-text" %>
+          <% else %>
+            <%= link_to "Mark Complete", complete_todo_list_todo_item_path(@todo_list, item), method: :patch, class: "icon-check unchecked hide-text" %>
+          <% end %>
+        </div>
+        <div class="small-10 medium-11 columns truncate todo-content" title="<%= item.content %>">
+          <%= link_to item.content, edit_todo_list_todo_item_path(@todo_list, item) %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="row blank-slate">
+    <div class="small-12 small-centered columns">
+      <p>You don't have any todo items!</p>
+      <%= link_to "Add Todo Item", new_todo_list_todo_item_path(@todo_list), class: "button radius success" %>
+    </div>
+  </div>
+<% end %>
 
 <div id="email-modal" class="reveal-modal tiny" data-reveal>
   <a class="close-reveal-modal">&#215;</a>

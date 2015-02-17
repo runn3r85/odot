@@ -1,6 +1,6 @@
 class TodoListsController < ApplicationController
   before_action :require_user
-  before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo_list, only: [:show, :edit, :update, :destroy, :email]
   before_action :set_back_link, except: [:index]
 
   # GET /todo_lists
@@ -12,6 +12,16 @@ class TodoListsController < ApplicationController
   # GET /todo_lists/1
   # GET /todo_lists/1.json
   def show
+  end
+
+  def email
+    destination = params[:to]
+    notifier = Notifier.todo_list(@todo_list, destination)
+    if destination =~ (/@/) && notifier.deliver
+      redirect_to todo_list_todo_items_path(@todo_list), success: "Todo list was sent!"
+    else
+      redirect_to todo_list_todo_items_path(@todo_list), failure: "Todo list could not be sent."
+    end
   end
 
   # GET /todo_lists/new

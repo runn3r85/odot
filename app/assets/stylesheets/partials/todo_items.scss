@@ -24,5 +24,43 @@
 .unchecked:hover {
   background-color: $orange;
   background: $orange url(asset_path(#{"icon-checked.svg"})) center center;
-  
 }
+
+#todo-list-functions {
+  padding-top: 10px;
+  background: #fff;
+
+  a span.fa {
+    display: block;
+    font-size: 1.4em;
+    clear: both;
+  }
+
+
+  .outline {
+    background: none;
+    color: $blue;
+    border: 1px solid $blue;
+
+    &:hover {
+      background: $blue;
+      color: #fff;
+    }
+
+    &.alert {
+      color: red;
+      border-color: red;
+
+      &:hover {
+        background: red;
+        color: #fff;
+      }
+    }
+  }
+}
+
+
+
+
+
+

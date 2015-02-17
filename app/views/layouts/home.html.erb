@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield :title %>Odot</title>
+  <title>Odot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "vendor/modernizr" %>
@@ -11,13 +11,23 @@
 <body>
 
   <%= render partial: "layouts/flash" %>
-  <header>
-    <p><%= link_to "Sign In", login_path %></p>
-    <p><%= link_to "Sign Up", new_user_path %></p>
-  </header>
-  <%= yield %>
-   
-  </footer>
 
+  <header class="row global-header">
+    <div class="small-12 small-centered columns">
+    <p><%= render partial: "layouts/header_logged_out" %></p>
+    </div>
+  </header>
+
+  <div class="row">
+    <div class="small-12 small-centered columns">
+      <%= yield %>
+    </div>
+  </div>
+
+  <footer class="row global-footer">
+    <div class="small-12 small-centered columns text-center">
+      <%= link_to "Already have an account? Sign In", login_path %>
+    </div>
+  </footer>
 </body>
 </html>

@@ -14,6 +14,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'sass-rails', '~> 5.0.1'
 gem 'foundation-rails', '~> 5.5.1'
 
+gem "font-awesome-rails", '~> 4.3.0'
+
 
 group :doc do
   gem 'sdoc', require: false

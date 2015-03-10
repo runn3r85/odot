@@ -1,5 +1,13 @@
 Odot::Application.routes.draw do
 
+  namespace :api do
+    # namespace :v1 do
+
+    # end
+    resources :todo_lists
+  end
+
+
   get "/login", to: "user_sessions#new", as: :login
   delete "/logout", to: "user_sessions#destroy", as: :logout
 
@@ -15,6 +23,7 @@ Odot::Application.routes.draw do
   		end
   	end
   end
+
 
   root 'pages#home'
 end

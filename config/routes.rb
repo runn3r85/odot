@@ -4,7 +4,9 @@ Odot::Application.routes.draw do
     # namespace :v1 do
 
     # end
-    resources :todo_lists
+    resources :todo_lists do
+      resources :todo_items, only: [:create, :update, :destroy]
+    end
   end
 
 

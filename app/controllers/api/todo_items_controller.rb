@@ -1,20 +1,12 @@
-class Api::TodoListsController < ApplicationController
+class Api::TodoItemsController < ApplicationController
   skip_before_filter :verify_authenticity_token
-
-  def index
-    render json: TodoList.all
-  end
-
-  def show
-    list = TodoList.find(params[:id])
-    render json: list
-  end
+  before_filter :find_todo_list
 
   def create
-    list = TodoList.new(list_params)
+    item = @todo_list.todo_items.new(item_params)
     if list.save
       render status: 200, json: {
-        message: "Successfully created Todo List.",
+        message: "Successfully created Todo Item.",
         todo_list: list
       }.to_json
     else
@@ -26,25 +18,25 @@ class Api::TodoListsController < ApplicationController
   end
 
   def update
-    list = TodoList.new(list_params)
-    if list.update_attribues(list_params)
+    item = @todo_list.todo_items.find(params[:id])
+    if item.update_attribues(item_params)
       render status: 200, json: {
         message: "Successfully Updated.",
         todo_list: list
       }.to_json
     else
       render status: 422, json: {
-        message: "Sorry, that todo list could not be updated.",
+        message: "Sorry, that todo item could not be updated.",
         errors: list.errors
       }.to_json
     end
   end
 
   def destroy
-    list = TodoList.find(params[:id])
+    item = @todo_list.todo_items.find(params[:id])
     if list.destroy
       render status: 200, json: {
-        message: "Successfully deleted Todo List."
+        message: "Successfully deleted Todo Item."
       }.to_json
     else
       render status: 500, json: {
@@ -55,7 +47,11 @@ class Api::TodoListsController < ApplicationController
   end
 
   private
-  def list_params
-    params.require("todo_list").permit("title")
+  def item_params
+    params.require("todo_item").permit("content")
+  end
+
+  def find_todo_list
+    @todo_list = TodoList.find(params[:todo_list_id])
   end
 end
